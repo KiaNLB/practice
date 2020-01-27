@@ -1,46 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   last_word.c                                        :+:      :+:    :+:   */
+/*   ft_wdmatch.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kbintcli <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/01/23 10:24:48 by kbintcli          #+#    #+#             */
-/*   Updated: 2020/01/27 09:53:12 by kbintcli         ###   ########.fr       */
+/*   Created: 2020/01/26 19:04:01 by kbintcli          #+#    #+#             */
+/*   Updated: 2020/01/26 20:12:56 by kbintcli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
 
-int last_word(char *str)
+int main(int argc, char **argv)
 {
-	int i = 1;
-	int c = 0;
-	
-	while (str[i] != '\0')
+	int i;
+	int k;
+
+	i = 0;
+	k = 0;
+	if (argc == 3)
 	{
-		if (str[i] != ' ' && str[i - 1] == ' ')
-			c = i;
-		if (str[i] != '\t' && str[i - 1] == '\t')
-			c = i;
-		i++;
-	}
-	while (str[c] != '\0' && str[c] != ' ' && str[c] != '\t')
-	{
-		write(1, &str[c], 1);
-		c++;
+		while (argv[2][k] != '\0' || argv[1][i] != '\0')
+		{
+			if(argv[1][i] == argv[2][k])
+			{
+			   	
+			}
+		}
 	}
 	write(1, "\n", 1);
-	return (0);
-}
-
-int		main(int ac, char **av)
-{
-	if (ac != 2)
-	{
-		write(1, "\n", 1);
-	} else {
-		last_word(av[1]);
-	}
 	return (0);
 }

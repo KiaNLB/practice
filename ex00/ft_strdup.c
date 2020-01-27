@@ -1,46 +1,44 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   last_word.c                                        :+:      :+:    :+:   */
+/*   ft_strdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kbintcli <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/01/23 10:24:48 by kbintcli          #+#    #+#             */
-/*   Updated: 2020/01/27 09:53:12 by kbintcli         ###   ########.fr       */
+/*   Created: 2020/01/27 14:06:08 by kbintcli          #+#    #+#             */
+/*   Updated: 2020/01/27 14:23:14 by kbintcli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
+#include <stdio.h>
+#include <stdlib.h>
 
-int last_word(char *str)
+char  *ft_strdup(char *src)
 {
-	int i = 1;
-	int c = 0;
-	
-	while (str[i] != '\0')
+	int i;
+	char *dest;
+
+	i = 0;
+	while (src[i] != '\0')
+		i++;
+	if (!(dest = (char *) malloc(sizeof(char) * i + 1)))
+		return (NULL);
+	i = 0;
+	while (src[i] != '\0')
 	{
-		if (str[i] != ' ' && str[i - 1] == ' ')
-			c = i;
-		if (str[i] != '\t' && str[i - 1] == '\t')
-			c = i;
+		dest[i] = src[i];
 		i++;
 	}
-	while (str[c] != '\0' && str[c] != ' ' && str[c] != '\t')
-	{
-		write(1, &str[c], 1);
-		c++;
-	}
-	write(1, "\n", 1);
-	return (0);
+	dest[i] = '\0';
+	return (dest);
 }
 
-int		main(int ac, char **av)
+/*int main(void)
 {
-	if (ac != 2)
-	{
-		write(1, "\n", 1);
-	} else {
-		last_word(av[1]);
-	}
+	char *dest;
+
+	dest = ft_strdup("hi there");
+	printf("%s", dest);
+	free(dest);
 	return (0);
-}
+}*/

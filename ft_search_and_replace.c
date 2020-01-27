@@ -1,46 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   last_word.c                                        :+:      :+:    :+:   */
+/*   ft_search_and_replace.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kbintcli <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/01/23 10:24:48 by kbintcli          #+#    #+#             */
-/*   Updated: 2020/01/27 09:53:12 by kbintcli         ###   ########.fr       */
+/*   Created: 2020/01/26 11:06:35 by kbintcli          #+#    #+#             */
+/*   Updated: 2020/01/26 11:55:44 by kbintcli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
 
-int last_word(char *str)
+int	main(int argc, char **argv)
 {
-	int i = 1;
-	int c = 0;
-	
-	while (str[i] != '\0')
-	{
-		if (str[i] != ' ' && str[i - 1] == ' ')
-			c = i;
-		if (str[i] != '\t' && str[i - 1] == '\t')
-			c = i;
-		i++;
-	}
-	while (str[c] != '\0' && str[c] != ' ' && str[c] != '\t')
-	{
-		write(1, &str[c], 1);
-		c++;
-	}
-	write(1, "\n", 1);
-	return (0);
-}
+	int i;
 
-int		main(int ac, char **av)
-{
-	if (ac != 2)
-	{
+	i = 0;
+	if (argc != 4)
 		write(1, "\n", 1);
-	} else {
-		last_word(av[1]);
+	else if (argv[2][1] != '\0' && argv[3][1] != '\0')
+		write(1, "\n", 1);
+	else if (argc == 4)
+	{
+		while (argv[1][i] != '\0')
+		{
+			if (argv[1][i] == argv[2][0])
+			{
+				write(1, &argv[3][0], 1);;
+			}
+			else
+				write(1, &argv[1][i], 1);
+			i++;
+		}
+		write(1, "\n", 1);
 	}
 	return (0);
 }
